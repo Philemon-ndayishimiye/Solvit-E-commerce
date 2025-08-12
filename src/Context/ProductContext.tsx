@@ -1,8 +1,7 @@
-import React, { createContext, useEffect, useReducer, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import api from "../app/api/api";
 import type { ContextSent, contextType } from "../type/context";
 import type { ProductType } from "../type/Product";
-import { ProductReducer } from "../Reducer/ProductReducer";
 
 export const ProductContext = createContext<ContextSent>({
   Products: [],
@@ -10,15 +9,12 @@ export const ProductContext = createContext<ContextSent>({
 });
 
 export const ProductProvider: React.FC<contextType> = ({ children }) => {
-  const [items, setItems] = useState<ProductType[]>([]);
-
-  const [products, dispatch] = useReducer(ProductReducer, items);
-
+  const [products, setProducts] = useState<ProductType[]>([]);
   useEffect(() => {
     const FetchData = async () => {
       try {
         const res = await api.get<ProductType[]>("/products");
-        setItems(res.data);
+        setProducts(res.data);
         console.log(res);
       } catch (error) {
         console.error(error);
@@ -27,6 +23,8 @@ export const ProductProvider: React.FC<contextType> = ({ children }) => {
 
     FetchData();
   }, []);
+
+  const dispatch = () => {};
 
   return (
     <ProductContext.Provider value={{ Products: products, dispatch: dispatch }}>
