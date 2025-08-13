@@ -1,5 +1,4 @@
-
-import type { NewProduct } from "../type/Product";
+import type { NewProduct, ProductType } from "../type/Product";
 
 export type Actions =
   | {
@@ -13,4 +12,12 @@ export type Actions =
   | {
       type: "Update Product";
       payload: { id: number };
+    }
+  | {
+      type: "Set Product";
+      payload: ProductType[];
+    }
+  | {
+      type: "Toggle Product";
+      payload: ProductType[];
     };

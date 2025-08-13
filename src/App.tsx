@@ -1,10 +1,13 @@
 import { useProduct } from "./hooks/useProduct";
+import Home from "./Pages/Home";
 
 function App() {
   const { Products } = useProduct();
 
   console.log(Products);
-  return <div className="text-blue-600">hello philos</div>;
+  return <div>
+    <Home/>
+  </div>;
 }
 
 export default App;

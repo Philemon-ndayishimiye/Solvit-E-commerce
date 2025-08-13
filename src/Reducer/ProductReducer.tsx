@@ -6,6 +6,8 @@ export const ProductReducer = (
   action: Actions
 ): ProductType[] => {
   switch (action.type) {
+    case "Set Product":
+      return action.payload;
     case "Add Product":
       return [
         ...product,
