@@ -75,36 +75,16 @@ export default function Home() {
     }
   };
 
-  const handleNewProduct = async () => {
-    setOpen(true);
+  const handleNewProduct = async (e: React.FormEvent) => {
+    e.preventDefault();
+
     try {
-      await api.post<ProductType>("/products/add");
+      const res = await api.post<ProductType>("/products/add", form);
       dispatch({
         type: "Add Product",
-        payload: {
-          title: form.title,
-          description: form.description,
-          category: form.category,
-          price: form.price,
-          discountPercentage: form.discountPercentage,
-          rating: form.rating,
-          stock: form.stock,
-          tags: form.tags,
-          brand: form.brand,
-          sku: form.sku,
-          weight: form.weight,
-          dimensions: form.dimensions,
-          warrantyInformation: form.warrantyInformation,
-          shippingInformation: form.shippingInformation,
-          availabilityStatus: form.availabilityStatus,
-          reviews: form.reviews,
-          returnPolicy: form.returnPolicy,
-          minimumOrderQuantity: form.minimumOrderQuantity,
-          meta: form.meta,
-          thumbnail: form.thumbnail,
-          images: form.images,
-        },
+        payload: res.data,
       });
+      setOpen(false);
     } catch (error) {
       console.error(error);
     }

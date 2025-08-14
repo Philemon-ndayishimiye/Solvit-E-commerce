@@ -22,6 +22,7 @@ export default function Card({
           <img
             className="transition-transform duration-300 hover:scale-110"
             src={thumbnail}
+            alt={title}
           />
         </div>
       </div>
