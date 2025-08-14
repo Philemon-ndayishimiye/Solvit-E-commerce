@@ -6,6 +6,8 @@ export const ProductReducer = (
   action: Actions
 ): ProductType[] => {
   switch (action.type) {
+    case "Set Product":
+      return action.payload;
     case "Remove Product":
       return product.filter((prod) => prod.id !== action.payload.id);
     case "Add Product":
