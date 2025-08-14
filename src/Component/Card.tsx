@@ -19,7 +19,10 @@ export default function Card({
           <h1 className="pr-2 font-bold ">{title}</h1>
         </div>
         <div>
-          <img src={thumbnail} />
+          <img
+            className="transition-transform duration-300 hover:scale-110"
+            src={thumbnail}
+          />
         </div>
       </div>
 

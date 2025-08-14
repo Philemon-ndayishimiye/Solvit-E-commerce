@@ -1,13 +1,12 @@
-import { useProduct } from "./hooks/useProduct";
-import Home from "./Pages/Home";
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-  const { Products } = useProduct();
-
-  console.log(Products);
-  return <div>
-    <Home/>
-  </div>;
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  );
 }
 
 export default App;
