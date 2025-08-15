@@ -11,6 +11,7 @@ import { IoMdAdd } from "react-icons/io";
 import Form from "../Component/Form";
 import Button from "../Component/Button";
 import Input from "../Component/Input";
+import Aside from "../Component/Aside";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
@@ -93,13 +94,19 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex gap-10">
-        <div className="w-[40%]">
+      <div className="flex">
+        <div className="w-[700px] bg-gray-100">
           <div>
             <h1 className="font-bold text-black text-xl  py-2 cursor-pointer text-center">
               Categories
             </h1>
           </div>
+          {select.map((sele) => (
+            <Aside
+              name={sele.name}
+              onClick={() => handleSelectCategory(sele.name)}
+            />
+          ))}
         </div>
 
         <div>
@@ -110,8 +117,8 @@ export default function Home() {
           )}
 
           <div>
-            <div className="flex gap-7">
-              <div className=" justify-center border w-[612px] ml-[19%] rounded-2xl mt-[50px]">
+            <div className="flex gap-[22%]">
+              <div className=" justify-center border w-[475px] ml-[19%] rounded-2xl mt-[50px]">
                 <Input
                   name="search"
                   value={input}
@@ -122,20 +129,7 @@ export default function Home() {
                 <Button label="Search" onClick={handleSearch} />
               </div>
 
-              <div className="mt-[50px]">
-                <select
-                  onChange={(e) => {
-                    handleSelectCategory(e.target.value);
-                  }}
-                  className="px-[25px] border py-2"
-                >
-                  {select.map((sele) => (
-                    <option value={sele.name}>{sele.name}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="mt-[50px] ml-[20px] cursor-pointer">
+              <div className="mt-[50px] float-right cursor-pointer">
                 <IoMdAdd
                   onClick={() =>
                     setOpen((prev) => (prev === false ? true : false))
