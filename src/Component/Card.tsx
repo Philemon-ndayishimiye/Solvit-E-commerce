@@ -13,10 +13,10 @@ export default function Card({
     <div onClick={onClick} className="cursor-pointer shadow-md py-2">
       <div>
         <div className="flex justify-between ml-[20px] ">
-          <h2 className="bg-red-500 rounded-2xl py-2 px-7 cursor-pointer">
+          <h2 className="bg-red-500 rounded-xl py-2 px-3 cursor-pointer">
             {discountPercentage}%
           </h2>
-          <h1 className="pr-2 font-bold ">{title}</h1>
+          <h1 className="pr-1 font-bold ">{title}</h1>
         </div>
         <div>
           <img

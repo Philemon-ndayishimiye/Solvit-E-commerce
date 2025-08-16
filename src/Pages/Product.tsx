@@ -38,6 +38,10 @@ export default function Product() {
     }
   };
 
+  const handleUpdate = (id: number) => {
+    Navigate(`/edit/${id}`);
+  };
+
   return (
     <div>
       <div>
@@ -152,7 +156,10 @@ export default function Product() {
                   >
                     Delete
                   </button>
-                  <button className="rounded-md bg-green-500 text-white px-10 py-3 cursor-pointer">
+                  <button
+                    onClick={() => handleUpdate(Product.id!)}
+                    className="rounded-md bg-green-500 text-white px-10 py-3 cursor-pointer"
+                  >
                     Update
                   </button>
                 </div>

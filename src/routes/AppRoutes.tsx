@@ -5,6 +5,7 @@ import Product from "../Pages/Product";
 import Category from "../Pages/Category";
 import AddProduct from "../Pages/AddProduct";
 import Search from "../Pages/Search";
+import Edit from "../Pages/Edit";
 
 export default function AppRoutes() {
   return (
@@ -16,6 +17,7 @@ export default function AppRoutes() {
         <Route path="/Category/:name" element={<Category />} />
         <Route path="/addProduct" element={<AddProduct />} />
         <Route path="/Search/:input" element={<Search />} />
+        <Route path="/edit/:id" element={<Edit />} />
       </Routes>
     </div>
   );

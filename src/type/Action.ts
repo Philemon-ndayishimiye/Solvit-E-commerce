@@ -11,7 +11,7 @@ export type Actions =
     }
   | {
       type: "Update Product";
-      payload: { id: number };
+      payload: ProductType;
     }
   | {
       type: "Set Product";

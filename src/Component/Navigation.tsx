@@ -12,6 +12,7 @@ export default function Navigation() {
 
   const handleClick = () => {
     if (!input.trim()) {
+      alert("Enter Product to search");
       return;
     } else {
       Navigate(`/Search/${input}`);
@@ -36,7 +37,7 @@ export default function Navigation() {
           placeholder="search product"
           type="text"
         />
-        <Button label="Search" onClick={() => Navigate(`/Search/${input}`)} />
+        <Button label="Search" onClick={handleClick} />
       </div>
       <div className="cursor-pointer">
         <IoMdAdd

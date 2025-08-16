@@ -2,18 +2,12 @@ import { useEffect, useState } from "react";
 import Card from "../Component/Card";
 import { useProduct } from "../hooks/useProduct";
 import type { ProductType } from "../type/Product";
-import api from "../app/api/api";
-import type { ProductsResponse } from "../type/Product";
-import Form from "../Component/Form";
-import Button from "../Component/Button";
-import Input from "../Component/Input";
 import { useNavigate } from "react-router-dom";
 import SideBar from "../Component/SideBar";
 import Navigation from "../Component/Navigation";
 
 export default function Home() {
   const Navigate = useNavigate();
-  const [open, setOpen] = useState(false);
   const [SearchProduct, setSearchProduct] = useState<ProductType[]>([]);
   const { Products } = useProduct();
 
