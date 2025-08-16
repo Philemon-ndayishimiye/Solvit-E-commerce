@@ -4,19 +4,17 @@ import { useProduct } from "../hooks/useProduct";
 import type { ProductType } from "../type/Product";
 import api from "../app/api/api";
 import type { ProductsResponse } from "../type/Product";
-import type { Category } from "../type/Category";
 import { IoMdAdd } from "react-icons/io";
 import Form from "../Component/Form";
 import Button from "../Component/Button";
 import Input from "../Component/Input";
-import Aside from "../Component/Aside";
 import { useNavigate } from "react-router-dom";
+import SideBar from "../Component/SideBar";
 
 export default function Home() {
   const Navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
-  const [select, setSelect] = useState<Category[]>([]);
   const [SearchProduct, setSearchProduct] = useState<ProductType[]>([]);
   const { Products } = useProduct();
 
@@ -44,53 +42,10 @@ export default function Home() {
     }
   };
 
-  useEffect(() => {
-    const handleSelect = async () => {
-      try {
-        const Select = await api.get<Category[]>("/products/categories");
-
-        setSelect(Select.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    handleSelect();
-  }, []);
-
-  const handleSelectCategory = async (categoryName: string) => {
-    try {
-      if (categoryName === "all") {
-        const res = await api.get<ProductsResponse>("/products");
-        setSearchProduct(res.data.products);
-      } else {
-        const res = await api.get<ProductsResponse>(
-          `/products/category/${encodeURIComponent(categoryName)}`
-        );
-        setSearchProduct(res.data.products);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <>
       <div className="flex">
-        <div className="w-[700px] bg-gray-100">
-          <div>
-            <h1 className="font-bold text-black text-xl  py-2 cursor-pointer text-center">
-              Categories
-            </h1>
-          </div>
-          {select.map((sele) => (
-            <Aside
-              name={sele.name}
-              onClick={() => handleSelectCategory(sele.name)}
-            />
-          ))}
-        </div>
-
+        <SideBar />
         <div>
           {open && (
             <div className="absolute">
