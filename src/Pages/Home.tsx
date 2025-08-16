@@ -12,8 +12,10 @@ import Form from "../Component/Form";
 import Button from "../Component/Button";
 import Input from "../Component/Input";
 import Aside from "../Component/Aside";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const Navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [select, setSelect] = useState<Category[]>([]);
@@ -29,8 +31,7 @@ export default function Home() {
   }, [Products]);
 
   const handleDisplay = (product: ProductType) => {
-    setDetails(true);
-    setSelectedProduct(product);
+    Navigate(`/product/${product.id}`);
   };
 
   const handleSearch = async () => {
