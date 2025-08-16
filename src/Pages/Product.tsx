@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../app/api/api";
 import type { ProductType } from "../type/Product";
 import { FaStar } from "react-icons/fa";
 import { useProduct } from "../hooks/useProduct";
+import Navigation from "../Component/Navigation";
+import SideBar from "../Component/SideBar";
 
 export default function Product() {
   const Navigate = useNavigate();
@@ -39,9 +41,14 @@ export default function Product() {
   return (
     <div>
       <div>
-        <div className=" absolute top-0 bg-gray-200 w-[80%] border-gray-100 shadow-lg rounded-md">
-          <div className="float-right mr-[45px]"></div>
+        <Navigation />
+      </div>
 
+      <div className="flex">
+        <div>
+          <SideBar />
+        </div>
+        <div className=" w-full bg-gray-100  shadow-lg rounded-md">
           <div className="flex gap-[190px]">
             <div className="pl-[40px] py-[10px]">
               <div className="border-none ">

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../app/api/api";
 import type { ProductType, ProductsResponse } from "../type/Product";
 import Card from "../Component/Card";
 import SideBar from "../Component/SideBar";
+import Navigation from "../Component/Navigation";
 
 export default function Category() {
   const Navigate = useNavigate();
@@ -23,23 +24,26 @@ export default function Category() {
   };
 
   return (
-    <div className="flex">
-      <div>
-        <SideBar />
+    <>
+      <Navigation />
+      <div className="flex">
+        <div>
+          <SideBar />
+        </div>
+        <div className="grid grid-cols-3 gap-10 mx-[40px] my-[40px]">
+          {products.map((product) => (
+            <Card
+              key={product.id}
+              title={product.title}
+              description={product.description}
+              thumbnail={product.thumbnail}
+              price={product.price}
+              discountPercentage={product.discountPercentage}
+              onClick={() => handleDisplay(product)}
+            />
+          ))}
+        </div>
       </div>
-      <div className="grid grid-cols-3 gap-10 mx-[40px] my-[40px]">
-        {products.map((product) => (
-          <Card
-            key={product.id}
-            title={product.title}
-            description={product.description}
-            thumbnail={product.thumbnail}
-            price={product.price}
-            discountPercentage={product.discountPercentage}
-            onClick={() => handleDisplay(product)}
-          />
-        ))}
-      </div>
-    </div>
+    </>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Aside from "./Aside";
 import type { Category } from "../type/Category";
 import api from "../app/api/api";
