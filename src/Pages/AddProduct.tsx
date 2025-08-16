@@ -3,8 +3,10 @@ import { useProduct } from "../hooks/useProduct";
 import type { ProductType } from "../type/Product";
 import api from "../app/api/api";
 import Navigation from "../Component/Navigation";
+import { useNavigate } from "react-router-dom";
 
 export default function Form() {
+  const Navigate = useNavigate();
   const { dispatch } = useProduct();
 
   const [form, setForm] = useState<ProductType>({
@@ -39,6 +41,7 @@ export default function Form() {
         type: "Add Product",
         payload: res.data,
       });
+      Navigate("/");
     } catch (error) {
       console.error(error);
     }
