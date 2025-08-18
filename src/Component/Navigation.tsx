@@ -50,7 +50,7 @@ export default function Navigation() {
         <div>
           <h1
             onClick={() => Navigate("/")}
-            className="text-2xl font-bold cursor-pointer max-sm:hidden"
+            className="text-2xl font-bold cursor-pointer max-sm:hidden max-md:hidden"
           >
             Philos <span className="text-red-500">commerce</span>
           </h1>
@@ -68,12 +68,12 @@ export default function Navigation() {
         </div>
 
         <div>
-          <div className="relative">
+          <div className="relative max-md:pt-2">
             <FiShoppingCart
               onClick={showCart}
-              className="text-white text-3xl cursor-pointer"
+              className="text-white  text-3xl cursor-pointer"
             />
-            <h1 className="text-red-600 text-[10px] absolute top-[-10px] font-bold left-3">
+            <h1 className="text-red-600 text-[10px] max-md:top-[-8px] absolute top-[-10px] font-bold left-3">
               {cartLength}
             </h1>
           </div>
@@ -95,12 +95,12 @@ export default function Navigation() {
         )}
       </div>
 
-      <div className="absolute top-13 z-100 bg-gray-100 max-md:hidden max-sm:block max-lg:hidden max-xl:hidden max-2xl:hidden">
+      <div className="absolute max-md:top-17 top-13 z-100 bg-gray-100 max-md:block max-sm:block max-lg:hidden max-xl:hidden max-2xl:hidden">
         {open && (
           <div>
             <h1
               onClick={() => Navigate("/")}
-              className="text-2xl font-bold cursor-pointer"
+              className=" pl-2 text-2xl font-bold cursor-pointer"
             >
               Philos <span className="text-red-500">commerce</span>
             </h1>

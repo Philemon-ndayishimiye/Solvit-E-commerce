@@ -28,7 +28,7 @@ export default function SideBar() {
     <div>
       <div className="w-[220px] bg-gray-100">
         <div>
-          <h1 className="font-bold text-black text-xl  py-2 cursor-pointer text-center max-sm:hidden">
+          <h1 className="font-bold text-black text-xl  py-2 cursor-pointer text-center max-sm:hidden max-md:hidden">
             Categories
           </h1>
         </div>

@@ -49,12 +49,12 @@ export default function Search() {
   return (
     <div>
       <Navigation />
-      <div className="flex max-sm:flex-col">
-        <div className="max-sm:hidden">
+      <div className="flex max-sm:flex-col max-md:flex-col">
+        <div className="max-sm:hidden max-md:hidden">
           <SideBar />
         </div>
 
-        <div className="grid grid-cols-3 gap-10 mx-[40px] my-[40px] max-sm:grid-cols-1">
+        <div className="grid grid-cols-3 gap-10 mx-[40px] my-[40px] max-sm:grid-cols-1 max-md:grid-cols-2">
           {products.map((product) => (
             <Card
               key={product.id}
