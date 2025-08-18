@@ -45,7 +45,7 @@ export default function Home() {
           <SideBar />
         </div>
 
-        <div className="grid grid-cols-3 gap-10 mx-[40px] my-[40px] max-sm:grid-cols-1 max-md:grid-cols-2 ">
+        <div className="grid grid-cols-3 gap-10 mx-[40px] my-[40px] max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-1 ">
           {SearchProduct.map((product) => (
             <Card
               key={product.id}

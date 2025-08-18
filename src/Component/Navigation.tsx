@@ -39,8 +39,8 @@ export default function Navigation() {
 
   return (
     <>
-      <div className=" flex bg-amber-300 py-3 px-10 justify-between max-sm:px-1 max-sm:py-2">
-        <div className="text-3xl cursor-pointer">
+      <div className=" flex bg-amber-300 py-3 px-10 justify-between max-sm:px-1 max-sm:py-2 max-lg:px-2">
+        <div className="text-3xl cursor-pointer max-lg:hidden">
           {open ? (
             <IoMdClose onClick={ToggleMenu} />
           ) : (
@@ -50,7 +50,7 @@ export default function Navigation() {
         <div>
           <h1
             onClick={() => Navigate("/")}
-            className="text-2xl font-bold cursor-pointer max-sm:hidden max-md:hidden"
+            className="text-2xl font-bold cursor-pointer max-sm:hidden max-md:hidden max-lg:hidden"
           >
             Philos <span className="text-red-500">commerce</span>
           </h1>
@@ -81,7 +81,7 @@ export default function Navigation() {
 
         <div className="cursor-pointer ">
           <IoMdAdd
-            className="text-4xl pt-3 max-sm:pt-1 max-sm:text-3xl"
+            className="text-4xl pt-3 max-sm:pt-1 max-sm:text-3xl max-lg:pt-1"
             onClick={() => Navigate("/addProduct")}
           />
         </div>

@@ -28,8 +28,14 @@ export default function SideBar() {
     <div>
       <div className="w-[220px] bg-gray-100">
         <div>
-          <h1 className="font-bold text-black text-xl  py-2 cursor-pointer text-center max-sm:hidden max-md:hidden">
+          <h1 className="font-bold text-black text-xl  py-2 cursor-pointer text-center max-sm:hidden max-md:hidden max-lg:hidden">
             Categories
+          </h1>
+          <h1
+            onClick={() => Navigate("/")}
+            className="text-2xl font-bold cursor-pointer max-sm:hidden max-md:hidden max-lg:block max-xl:hidden max-2xl:hidden pl-2 py-1"
+          >
+            Philos <span className="text-red-500">commerce</span>
           </h1>
         </div>
         {categories.map((category) => (
