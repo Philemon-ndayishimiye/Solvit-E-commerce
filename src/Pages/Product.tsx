@@ -48,12 +48,12 @@ export default function Product() {
         <Navigation />
       </div>
 
-      <div className="flex">
-        <div>
+      <div className="flex max-sm:flex-col max-md:flex-col">
+        <div className="max-sm:hidden max-md:hidden">
           <SideBar />
         </div>
         <div className=" w-full bg-gray-100  shadow-lg rounded-md">
-          <div className="flex gap-[190px]">
+          <div className="flex gap-[190px] max-sm:flex-col">
             <div className="pl-[40px] py-[10px]">
               <div className="border-none ">
                 <img className="w-[350px]" src={Product.thumbnail} />
@@ -71,7 +71,7 @@ export default function Product() {
               </div>
             </div>
 
-            <div className=" mr-12 pt-10">
+            <div className=" mr-12 pt-10 max-sm:mr-1 max-sm:pl-5">
               <div className="flex gap-2">
                 <div className="text-amber-400 flex">
                   <FaStar />
