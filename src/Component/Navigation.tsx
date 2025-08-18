@@ -40,7 +40,7 @@ export default function Navigation() {
   return (
     <>
       <div className=" flex bg-amber-300 py-3 px-10 justify-between max-sm:px-1 max-sm:py-2 max-lg:px-2">
-        <div className="text-3xl cursor-pointer max-lg:hidden">
+        <div className="text-3xl cursor-pointer max-lg:hidden max-xl:hidden max-2xl:hidden max-md:block max-sm:block">
           {open ? (
             <IoMdClose onClick={ToggleMenu} />
           ) : (
