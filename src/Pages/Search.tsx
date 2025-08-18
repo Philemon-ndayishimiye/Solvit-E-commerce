@@ -43,18 +43,22 @@ export default function Search() {
       price: product.price,
       quantity: 1,
     });
+    alert(` ${product.title} added to cart Successfully `);
   };
 
   return (
     <div>
       <Navigation />
-      <div className="flex">
-        <SideBar />
-        <div className="grid grid-cols-3 gap-10 mx-[40px] my-[40px]">
+      <div className="flex max-sm:flex-col">
+        <div className="max-sm:hidden">
+          <SideBar />
+        </div>
+
+        <div className="grid grid-cols-3 gap-10 mx-[40px] my-[40px] max-sm:grid-cols-1">
           {products.map((product) => (
             <Card
               key={product.id}
-              product={product} 
+              product={product}
               onClick={() => handleDisplay(product)}
               onAddToCart={handleCart}
             />

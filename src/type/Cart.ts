@@ -7,6 +7,7 @@ export interface CartItem {
 
 export interface CartType {
   cartItem: CartItem[];
+  removeFromCart: (id: number) => void;
   addToCart: (Product: {
     id: number;
     title: string;

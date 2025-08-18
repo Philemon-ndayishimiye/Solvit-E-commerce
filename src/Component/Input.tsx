@@ -10,7 +10,7 @@ export default function Input({
 }: Input) {
   return (
     <input
-      className="border-none focus:outline-none w-[593px] py-2  px-6 rounded-xl "
+      className="border-none focus:outline-none w-[593px] py-2  px-6 rounded-xl max-sm:w-[140px] max-sm:py-0 max-sm:px-2"
       type={type}
       placeholder={placeholder}
       onChange={onChange}

@@ -29,12 +29,20 @@ export const CartProvider = ({ children }: Children) => {
     });
   };
 
+  const removeFromCart = (id: number) => {
+    setCart((prev) => {
+      const updatedCart = prev.filter((item) => item.id !== id);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      return updatedCart;
+    });
+  };
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
   return (
-    <CartContext.Provider value={{ cartItem: cart, addToCart }}>
+    <CartContext.Provider value={{ cartItem: cart, addToCart, removeFromCart }}>
       {children}
     </CartContext.Provider>
   );

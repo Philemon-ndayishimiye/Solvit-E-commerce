@@ -29,6 +29,7 @@ export default function Home() {
       price: product.price,
       quantity: 1,
     });
+    alert(` ${product.title} added to cart Successfully `);
   };
 
   useEffect(() => {
@@ -39,9 +40,12 @@ export default function Home() {
     <div>
       <Navigation />
 
-      <div className="flex">
-        <SideBar />
-        <div className="grid grid-cols-3 gap-10 mx-[40px] my-[40px]">
+      <div className="flex max-sm:flex-col">
+        <div className="max-sm:hidden">
+          <SideBar />
+        </div>
+
+        <div className="grid grid-cols-3 gap-10 mx-[40px] my-[40px] max-sm:grid-cols-1 ">
           {SearchProduct.map((product) => (
             <Card
               key={product.id}
