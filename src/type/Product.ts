@@ -42,6 +42,7 @@ export interface ProductType {
   thumbnail?: string;
   images?: string[];
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
+  onAddToCart?: (Product: ProductType) => void;
 }
 
 export type NewProduct = Omit<ProductType, "id">;
