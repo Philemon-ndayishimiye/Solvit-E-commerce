@@ -6,6 +6,7 @@ import Category from "../Pages/Category";
 import AddProduct from "../Pages/AddProduct";
 import Search from "../Pages/Search";
 import Edit from "../Pages/Edit";
+import Login from "../Pages/Login";
 
 export default function AppRoutes() {
   return (
@@ -18,6 +19,7 @@ export default function AppRoutes() {
         <Route path="/addProduct" element={<AddProduct />} />
         <Route path="/Search/:input" element={<Search />} />
         <Route path="/edit/:id" element={<Edit />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );

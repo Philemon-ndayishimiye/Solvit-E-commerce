@@ -9,6 +9,7 @@ import Cart from "./Cart";
 import { IoIosMenu } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
 import SideBar from "./SideBar";
+import { FiUser } from "react-icons/fi";
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
@@ -81,8 +82,15 @@ export default function Navigation() {
 
         <div className="cursor-pointer ">
           <IoMdAdd
-            className="text-4xl pt-3 max-sm:pt-1 max-sm:text-3xl max-lg:pt-1"
+            className="text-3xl pt-1 max-sm:pt-1 max-sm:text-3xl max-lg:pt-1"
             onClick={() => Navigate("/addProduct")}
+          />
+        </div>
+
+        <div className="pt-2">
+          <FiUser
+            onClick={() => Navigate("/login")}
+            className="text-xl cursor-pointer"
           />
         </div>
       </div>
