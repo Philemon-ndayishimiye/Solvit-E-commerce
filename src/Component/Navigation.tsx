@@ -4,19 +4,25 @@ import Button from "./Button";
 import { IoMdAdd } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
-// import { useCart } from "../hooks/useCart";
-// import Cart from "./Cart";
 import { IoIosMenu } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
 import SideBar from "./SideBar";
 import { FiUser } from "react-icons/fi";
-
+import { useCart } from "../hooks/useCart";
+import Cart from "../Component/Cart";
+import Logout from "./Logout";
 export default function Navigation() {
   const [open, setOpen] = useState(false);
   const [isCart, setIscart] = useState(false);
   const Navigate = useNavigate();
   const [input, setInput] = useState("");
-  // const { cartItem } = useCart();
+  const [logout, setLogout] = useState(false);
+
+  const handleLogout = () => {
+    setLogout(!logout);
+  };
+
+  const { cart } = useCart();
 
   const showCart = () => {
     console.log(isCart);
@@ -66,7 +72,12 @@ export default function Navigation() {
             variant="defolt"
           />
 
-          <Button type="button" label="Search" variant="defolt" onClick={handleClick} />
+          <Button
+            type="button"
+            label="Search"
+            variant="defolt"
+            onClick={handleClick}
+          />
         </div>
 
         <div>
@@ -76,7 +87,7 @@ export default function Navigation() {
               className="text-white  text-3xl cursor-pointer"
             />
             <h1 className="text-red-600 text-[10px] max-md:top-[-8px] absolute top-[-10px] font-bold left-3">
-              {/* {cartLength} */}
+              {cart.length}
             </h1>
           </div>
         </div>
@@ -89,17 +100,22 @@ export default function Navigation() {
         </div>
 
         <div className="pt-2">
-          <FiUser
-            onClick={() => Navigate("/login")}
-            className="text-xl cursor-pointer"
-          />
+          <FiUser onClick={handleLogout} className="text-xl cursor-pointer" />
         </div>
       </div>
 
       <div className="absolute top-16 right-0 z-50 bg-orange-400 max-sm:top-13">
         {isCart && (
           <div className="">
-            {/* <Cart /> */}
+            <Cart />
+          </div>
+        )}
+      </div>
+
+      <div className="absolute right-0 top-[66px]">
+        {logout && (
+          <div>
+            <Logout />
           </div>
         )}
       </div>
