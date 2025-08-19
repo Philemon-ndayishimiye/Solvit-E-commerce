@@ -1,6 +1,8 @@
 import type React from "react";
 
 export interface Button {
+  type: string;
   label: string;
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  variant?: "defolt" | "primary";
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }

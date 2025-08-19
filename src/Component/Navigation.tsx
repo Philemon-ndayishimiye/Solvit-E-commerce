@@ -63,9 +63,10 @@ export default function Navigation() {
             onChange={(e) => setInput(e.target.value)}
             placeholder="search product"
             type="text"
+            variant="defolt"
           />
 
-          <Button label="Search" onClick={handleClick} />
+          <Button label="Search" variant="defolt" onClick={handleClick} />
         </div>
 
         <div>
