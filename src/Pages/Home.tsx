@@ -6,12 +6,17 @@ import { useNavigate } from "react-router-dom";
 import SideBar from "../Component/SideBar";
 import Navigation from "../Component/Navigation";
 import { useCart } from "../hooks/useCart";
+import { useUser } from "../hooks/useUser";
 
 export default function Home() {
   const { addToCart, cartItem } = useCart();
   const navigate = useNavigate();
   const [SearchProduct, setSearchProduct] = useState<ProductType[]>([]);
   const { Products } = useProduct();
+
+  const { user } = useUser();
+
+  console.log(user);
 
   useEffect(() => {
     setSearchProduct(Products);

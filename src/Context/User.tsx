@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import type { Login } from "../type/Login";
+import type { LoginResponse } from "../type/Login";
 import api from "../app/api/api";
 
 interface UserType {
@@ -7,23 +7,27 @@ interface UserType {
 }
 
 interface UserCont {
-  user: Login[];
+  user: LoginResponse | null;
 }
 
-export const UserContext = createContext<Login[]>([]);
+export const UserContext = createContext<UserCont>({ user: null });
 
 export const UserProvider = ({ children }: UserType) => {
-  const [login, setLogin] = useState<Login>();
+  const [login, setLogin] = useState<LoginResponse | null>(null);
 
   useEffect(() => {
     const getLogin = async () => {
       try {
-        const Token = JSON.parse(localStorage.getItem("token") || "");
-        const res = await api.get<Login>("https://dummyjson.com/auth/me", {
-          headers: {
-            Authorization: `Bearer ${Token}`,
-          },
-        });
+        const token = localStorage.getItem("token");
+        if (!token) return;
+        const res = await api.get<LoginResponse>(
+          "https://dummyjson.com/auth/me",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         setLogin(res.data);
       } catch (error) {
@@ -31,5 +35,11 @@ export const UserProvider = ({ children }: UserType) => {
       }
     };
     getLogin();
-  }, [login]);
+  }, []);
+
+  return (
+    <UserContext.Provider value={{ user: login }}>
+      {children}
+    </UserContext.Provider>
+  );
 };

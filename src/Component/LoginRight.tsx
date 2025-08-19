@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Input from "./Input";
 import Button from "./Button";
-import type { Login } from "../type/Login";
+import type { LoginResponse, LoginRequest } from "../type/Login";
 import api from "../app/api/api";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginRight() {
   const Navigate = useNavigate();
-  const [form, setForm] = useState<Login>({
+  const [form, setForm] = useState<LoginRequest>({
     username: "",
     password: "",
   });
@@ -21,7 +21,7 @@ export default function LoginRight() {
     console.log("hello world");
 
     try {
-      const res = await api.post<Login>(
+      const res = await api.post<LoginResponse>(
         "https://dummyjson.com/auth/login",
         {
           username: form.username,
@@ -35,12 +35,10 @@ export default function LoginRight() {
       );
       if (res) {
         Navigate("/");
+        localStorage.setItem("token", res.data.accessToken);
       } else {
         alert("incorrect username or password");
       }
-
-      const Token = res.data.accessToken;
-      localStorage.setItem("token", JSON.stringify(Token));
     } catch (error: any) {
       alert(`incorrect credentials`);
       console.error("Login error:", error.response?.data || error.message);
