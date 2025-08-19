@@ -5,13 +5,13 @@ import type { ProductType, ProductsResponse } from "../type/Product";
 import Card from "../Component/Card";
 import SideBar from "../Component/SideBar";
 import Navigation from "../Component/Navigation";
-import { useCart } from "../hooks/useCart";
+// import { useCart } from "../hooks/useCart";
 
 export default function Category() {
   const navigate = useNavigate();
   const { name } = useParams<{ name: string }>();
   const [products, setProducts] = useState<ProductType[]>([]);
-  const { addToCart } = useCart();
+  // const { addToCart } = useCart();
 
   useEffect(() => {
     if (!name) return;
@@ -35,16 +35,18 @@ export default function Category() {
     navigate(`/product/${product.id}`);
   };
 
-  const handleCart = (product: ProductType) => {
-    if (!product.id || !product.title || !product.price) return;
-    addToCart({
-      id: product.id,
-      title: product.title,
-      price: product.price,
-      quantity: 1,
-    });
-    alert(` ${product.title} added to cart Successfully `);
-  };
+  // const handleCart = (product: ProductType) => {
+  //   if (!product.id || !product.title || !product.price) return;
+  //   addToCart({
+  //     id: product.id,
+  //     title: product.title,
+  //     price: product.price,
+  //     quantity: 1,
+  //   });
+  //   alert(` ${product.title} added to cart Successfully `);
+  // };
+
+  const handleCart = () => {};
 
   return (
     <>

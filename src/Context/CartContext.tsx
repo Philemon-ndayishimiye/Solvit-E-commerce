@@ -1,48 +1,42 @@
-import React, { createContext, useState, useEffect } from "react";
-import type { CartType, CartItem } from "../type/Cart";
+import { createContext, useEffect, useState } from "react";
+import type { TotalCart, Cart } from "../type/Cart";
+import { useUser } from "../hooks/useUser";
+import api from "../app/api/api";
 
-type Children = { children: React.ReactNode };
+interface Cartdata {
+  cart: Cart[];
+}
 
-export const CartContext = createContext<CartType | null>(null);
+interface cartCont {
+  children: React.ReactNode;
+}
+interface Cartdata {
+  cart: Cart[];
+  setCart: React.Dispatch<React.SetStateAction<Cart[]>>;
+}
 
-export const CartProvider = ({ children }: Children) => {
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    const storedCart = localStorage.getItem("cart");
-    return storedCart ? JSON.parse(storedCart) : [];
-  });
+export const CartContext = createContext<Cartdata>({
+  cart: [],
+  setCart: () => {},
+});
 
-  const addToCart = (Product: { id: number; title: string; price: number }) => {
-    setCart((prev) => {
-      const idx = prev.findIndex((item) => item.id === Product.id);
-
-      let updatedCart;
-      if (idx === -1) {
-        updatedCart = [...prev, { ...Product, quantity: 1 }];
-      } else {
-        const copy = [...prev];
-        copy[idx] = { ...copy[idx], quantity: copy[idx].quantity + 1 };
-        updatedCart = copy;
-      }
-
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
-      return updatedCart;
-    });
-  };
-
-  const removeFromCart = (id: number) => {
-    setCart((prev) => {
-      const updatedCart = prev.filter((item) => item.id !== id);
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
-      return updatedCart;
-    });
-  };
+export const CartProvider = ({ children }: cartCont) => {
+  const { user } = useUser();
+  const [cart, setCart] = useState<Cart[]>([]);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+    const getCartUser = async () => {
+      if (!user?.id) return;
+      const res = await api.get<TotalCart>(
+        `https://dummyjson.com/carts/user/${user.id}`
+      );
+      setCart(res.data.carts);
+    };
+    getCartUser();
+  }, [user?.id]);
 
   return (
-    <CartContext.Provider value={{ cartItem: cart, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cart, setCart }}>
       {children}
     </CartContext.Provider>
   );

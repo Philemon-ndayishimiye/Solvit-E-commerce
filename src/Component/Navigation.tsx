@@ -4,8 +4,8 @@ import Button from "./Button";
 import { IoMdAdd } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
-import { useCart } from "../hooks/useCart";
-import Cart from "./Cart";
+// import { useCart } from "../hooks/useCart";
+// import Cart from "./Cart";
 import { IoIosMenu } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
 import SideBar from "./SideBar";
@@ -16,7 +16,7 @@ export default function Navigation() {
   const [isCart, setIscart] = useState(false);
   const Navigate = useNavigate();
   const [input, setInput] = useState("");
-  const { cartItem } = useCart();
+  // const { cartItem } = useCart();
 
   const showCart = () => {
     console.log(isCart);
@@ -36,7 +36,7 @@ export default function Navigation() {
     }
   };
 
-  let cartLength = cartItem.length;
+  // let cartLength = cartItem.length;
 
   return (
     <>
@@ -66,7 +66,7 @@ export default function Navigation() {
             variant="defolt"
           />
 
-          <Button label="Search" variant="defolt" onClick={handleClick} />
+          <Button type="button" label="Search" variant="defolt" onClick={handleClick} />
         </div>
 
         <div>
@@ -76,7 +76,7 @@ export default function Navigation() {
               className="text-white  text-3xl cursor-pointer"
             />
             <h1 className="text-red-600 text-[10px] max-md:top-[-8px] absolute top-[-10px] font-bold left-3">
-              {cartLength}
+              {/* {cartLength} */}
             </h1>
           </div>
         </div>
@@ -99,7 +99,7 @@ export default function Navigation() {
       <div className="absolute top-16 right-0 z-50 bg-orange-400 max-sm:top-13">
         {isCart && (
           <div className="">
-            <Cart />
+            {/* <Cart /> */}
           </div>
         )}
       </div>

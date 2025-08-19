@@ -5,13 +5,13 @@ import type { ProductsResponse, ProductType } from "../type/Product";
 import Navigation from "../Component/Navigation";
 import SideBar from "../Component/SideBar";
 import Card from "../Component/Card";
-import { useCart } from "../hooks/useCart";
+// import { useCart } from "../hooks/useCart";
 
 export default function Search() {
   const navigate = useNavigate();
   const { input } = useParams<{ input: string }>();
   const [products, setProducts] = useState<ProductType[]>([]);
-  const { addToCart } = useCart();
+  // const { addToCart } = useCart();
 
   const handleDisplay = (product: ProductType) => {
     navigate(`/product/${product.id}`);
@@ -35,16 +35,18 @@ export default function Search() {
     handleSearch();
   }, [input]);
 
-  const handleCart = (product: ProductType) => {
-    if (!product.id || !product.title || !product.price) return;
-    addToCart({
-      id: product.id,
-      title: product.title,
-      price: product.price,
-      quantity: 1,
-    });
-    alert(` ${product.title} added to cart Successfully `);
-  };
+  // const handleCart = (product: ProductType) => {
+  //   if (!product.id || !product.title || !product.price) return;
+  //   addToCart({
+  //     id: product.id,
+  //     title: product.title,
+  //     price: product.price,
+  //     quantity: 1,
+  //   });
+  //   alert(` ${product.title} added to cart Successfully `);
+  // };
+
+  const handleCart = () => {};
 
   return (
     <div>

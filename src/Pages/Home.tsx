@@ -5,17 +5,19 @@ import type { ProductType } from "../type/Product";
 import { useNavigate } from "react-router-dom";
 import SideBar from "../Component/SideBar";
 import Navigation from "../Component/Navigation";
-import { useCart } from "../hooks/useCart";
 import { useUser } from "../hooks/useUser";
+import api from "../app/api/api";
+import { useCart } from "../hooks/useCart";
+import type { Cart } from "../type/Cart";
 
 export default function Home() {
-  const { addToCart, cartItem } = useCart();
   const navigate = useNavigate();
   const [SearchProduct, setSearchProduct] = useState<ProductType[]>([]);
   const { Products } = useProduct();
-
   const { user } = useUser();
+  const { cart, setCart } = useCart();
 
+  console.log(cart);
   console.log(user);
 
   useEffect(() => {
@@ -26,20 +28,37 @@ export default function Home() {
     navigate(`/product/${product.id}`);
   };
 
-  const handleCart = (product: ProductType) => {
-    if (!product.id || !product.title || !product.price) return; // safety
-    addToCart({
-      id: product.id,
-      title: product.title,
-      price: product.price,
-      quantity: 1,
-    });
-    alert(` ${product.title} added to cart Successfully `);
+  const handleCart = async (product: ProductType) => {
+    try {
+      const res = await api.post<Cart>(
+        "https://dummyjson.com/carts/add",
+        {
+          userId: user?.id,
+          products: [
+            {
+              id: product.id,
+              quantity: 1,
+            },
+          ],
+        },
+        {
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+
+      setCart((prev) => [...prev, res.data]);
+      console.log(res.data);
+      console.log(cart);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  useEffect(() => {
-    console.log("Cart updated:", cartItem);
-  }, [cartItem]);
+  // useEffect(() => {
+  //   console.log("Cart updated:", cartItem);
+  // }, [cartItem]);
 
   return (
     <div>
