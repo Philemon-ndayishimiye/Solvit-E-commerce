@@ -1,6 +1,8 @@
 import React from "react";
 import { MdDelete } from "react-icons/md";
 import { useCart } from "../hooks/useCart";
+import type { Cart } from "../type/Cart";
+import api from "../app/api/api";
 
 export default function Cart() {
   const { cart } = useCart();
@@ -9,6 +11,15 @@ export default function Cart() {
     (acc, item) => acc + item.discountedTotal,
     0
   );
+
+  const removeFromCart = async (items: Cart) => {
+    try {
+      const res = await api.delete(`/carts/${items.id}`);
+      console.log(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="p-6">
@@ -42,7 +53,7 @@ export default function Cart() {
                   <div className=" pl-8">
                     <MdDelete
                       className="text-red-500 text-3xl cursor-pointer"
-                      //   onClick={() => removeFromCart(item.id)}
+                      onClick={() => removeFromCart(item)}
                     />
                   </div>
                 </div>
