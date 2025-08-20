@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "../Component/Card";
 import { useProduct } from "../hooks/useProduct";
 import type { ProductType } from "../type/Product";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SideBar from "../Component/SideBar";
 import Navigation from "../Component/Navigation";
 import { useUser } from "../hooks/useUser";
@@ -29,9 +29,7 @@ export default function Home() {
   };
 
   const handleCart = async (product: ProductType) => {
-    if (!user) {
-      navigate("/login");
-    }
+    if (!user) return;
 
     try {
       const res = await api.post<Cart>(

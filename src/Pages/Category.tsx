@@ -39,9 +39,7 @@ export default function Category() {
   };
 
   const handleCart = async (product: ProductType) => {
-     if (!user) {
-      navigate("/login");
-    }
+    if (!user) return;
 
     try {
       const res = await api.post<Cart>(
