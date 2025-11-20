@@ -1,4 +1,4 @@
-import React from "react";
+
 import type { Input } from "../type/Input";
 
 const classVariant = {

@@ -1,5 +1,4 @@
 import type { Category } from "../type/Category";
-import React from "react";
 
 export default function Aside({ name, onClick }: Category) {
   return (

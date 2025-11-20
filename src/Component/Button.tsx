@@ -1,6 +1,5 @@
 import type { Button } from "../type/Button";
 
-import React from "react";
 
 const classVariant = {
   defolt: "text-white  bg-red-400",

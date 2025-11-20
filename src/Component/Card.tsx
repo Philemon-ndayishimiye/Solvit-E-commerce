@@ -1,4 +1,3 @@
-import React from "react";
 import type { ProductType } from "../type/Product";
 
 interface CardProps {
@@ -38,7 +37,9 @@ export default function Card({ product, onClick, onAddToCart }: CardProps) {
         <button
           onClick={(e) => {
             e.stopPropagation(); // prevent card click
-            onAddToCart && onAddToCart(product); // send full product
+            if (onAddToCart) {
+              onAddToCart(product); // send full product
+            }
           }}
           className="border-none px-6 py-2 bg-amber-400 rounded-lg cursor-pointer text-white font-bold "
         >

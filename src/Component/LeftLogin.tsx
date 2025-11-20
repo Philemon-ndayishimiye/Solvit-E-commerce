@@ -1,4 +1,4 @@
-import React from "react";
+
 import { BsCart4 } from "react-icons/bs";
 export default function LeftLogin() {
   return (

@@ -1,13 +1,13 @@
-import React from "react";
+
 import { CiLogout } from "react-icons/ci";
 import { IoIosSettings } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { Link, useNavigate } from "react-router-dom";
-import { useUser } from "../hooks/useUser";
+
 
 export default function Logout() {
   const token = localStorage.getItem("token");
-  const { user } = useUser();
+
   const Navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("token");
